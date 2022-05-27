@@ -1,0 +1,3 @@
+@section('content')
+    {{$reservations}}
+@endsection
