@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\Reservation;
+use App\models\Booking;
 
 class ReservationController extends Controller
 {
     public function index(){
-        $reservations = Reservation::orderBy('created_at','desc')->with(['user','likes'])->paginate(2); // Collection
+        $reservations = Booking::orderBy('created_at','desc'); // Collection
+        
         return view('reservations.index',[
             'reservations'=>$reservations
         ]);

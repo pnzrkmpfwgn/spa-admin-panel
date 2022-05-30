@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\models\Booking;
+
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -19,7 +21,9 @@ class LoginController extends Controller
         if(!auth()->attempt($request->only('email','password'))){
             return back()->with('status' ,'Invalid credentials');
         }
-
-        return view('reservations.index');
+        $reservations = Booking::orderBy('created_at','desc')->paginate(10); // Collection
+        return view('reservations.index',[
+            'reservations'=>$reservations
+        ]);
     }
 }
