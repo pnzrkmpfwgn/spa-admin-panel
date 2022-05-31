@@ -22,7 +22,7 @@
             
             .grid{
                 display: grid;
-                grid-template-columns: repeat(7,1fr);
+                grid-template-columns: repeat(8,1fr);
                 border-top:1px solid black;
                 margin-top:50px;
             }
@@ -76,8 +76,12 @@
             <strong>Status</strong>
            </span>
            <span class="table_heading">
-               <strong>change status</strong>
+            <strong> Payment ID </strong>
+            </span>
+           <span class="table_heading">
+               <strong>Change Status</strong>
            </span>
+           
         
        {{-- {{dd($reservations);}}  --}}
         @if($reservations->count())
@@ -89,6 +93,7 @@
             <div class="item" >{{$reservation->date}}</div>
             <div class="item" >{{$reservation->period}}</div>
             <div class="item" >{{$reservation->status}}</div>
+            <div class="item" >{{$reservation->payment_id}}</div>
         </form>
            <div>
             <form style="display:inline" action="{{route('served')}}" method="POST" >
