@@ -23,6 +23,10 @@ Route::post('register',[RegisterController::class,'store']);
 
 Route::post('logout',[LogoutController::class,'store'])->name('logout');
 
+Route::get('/search/',[LoginController::class,'search'])->name('search');
+
+Route::post('/served',[LoginController::class,'inputServed'])->name('served');
+Route::post('/cancelled',[LoginController::class,'inputCancelled'])->name('cancelled');
 // Route::get('/', function () {
 //     return view('reservations.index');
 // });
