@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\models\Booking;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -25,7 +26,7 @@ class RegisterController extends Controller
             'email' => 'required|email|max:255',
             'password' => 'required|confirmed'
         ]);
-
+        
         User::create([
             'name' => $request->name,
             'email'=> $request->email,
@@ -35,6 +36,10 @@ class RegisterController extends Controller
         //sign-in -> Redirect
         auth()->attempt($request->only('email','password')); // User
 
-        return view("reservations.index");
+        $reservations = Booking::paginate(10); // Collection
+
+        return view('reservations.index',[
+            'reservations'=>$reservations
+        ]);
      }
 }
