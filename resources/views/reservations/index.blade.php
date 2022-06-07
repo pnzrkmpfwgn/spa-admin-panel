@@ -117,6 +117,7 @@
    </div>
     <form action="{{route('logout')}}" method="post" class="p-3 inline" >
         @csrf
+        <p style="position: absolute;top:0; right:100px;top:15px" > {{auth()->user()->name}} </p>
         <button style="position: absolute;top:0;right:0;margin:10px" type="submit">Logout</button>
     </form>
     @else
